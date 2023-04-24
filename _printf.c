@@ -9,6 +9,7 @@ int _printf(const char *format, ...)
 {
 	va_list parameter;
 	char *str;
+	char cc;
 	int i = 0, size = 0;
 
 	va_start(parameter, format);
@@ -16,13 +17,13 @@ int _printf(const char *format, ...)
 	{
 		if (format[1] == 'c')
 		{
-			str = va_arg(parameter, char);
-			write(1, str, 1);
+			cc = va_arg(parameter, int);
+			write(1, &cc, 1);
 			return (1);
 		}
 		if (format[1] == 's')
 		{
-			str = va_arg(parameter, char *)
+			str = va_arg(parameter, char *);
 			while(str[i])
 			{
 				i++;
