@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
 		if (format[1] == 's')
 		{
 			str = va_arg(parameter, char *);
-			while(str[i])
+			while (str[i])
 			{
 				i++;
 				size++;
