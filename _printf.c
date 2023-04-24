@@ -33,4 +33,5 @@ int _printf(const char *format, ...)
 			return (size);
 		}
 	}
+	return (0);
 }
