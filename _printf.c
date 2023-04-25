@@ -33,7 +33,9 @@ int _printf(const char *format, ...)
 				printed += _puts(str);
 			}
 		}
+		_putchar(format[i]);
 		i++;
+		printed++;
 	}
 	va_end(parameter);
 	return (printed);
