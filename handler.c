@@ -40,9 +40,13 @@ int percent_handler(const char *str, va_list list, int *i)
 {
 	int size, j, number_formats;
 	format formats[] = {
-		{'s', print_string}, {'c', print_char}
+			{'s', print_string}, {'c', print_char},
+			{'d', print_integer}, {'i', print_integer},
+			{'b', print_binary}, {'u', print_unsigned},
+			{'o', print_octal}, {'x', print_hexadecimal_low},
+			{'X', print_hexadecimal_upp}, {'p', print_pointer},
+			{'r', print_rev_string}, {'R', print_rot}
 	};
-
 	*i = *i + 1;
 
 	if (str[*i] == '\0')

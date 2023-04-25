@@ -14,7 +14,7 @@ int percent_handler(const char *, va_list, int *);
 /* utils */
 int _strlen(const char *);       /* _strlen.c */
 int print(char *);               /* print.c */
-char *_itoa_base(long int, int); /* _itoa_base.c */
+char *itoa(long int, int); /* _itoa_base.c */
 int _putchar(char);              /* putchar.c */
 int buffer(char);                /* putchar.c */
 

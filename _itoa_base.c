@@ -1,12 +1,12 @@
 #include "main.h"
 /**
-  * _itoa_base - integer to ascii
+  * itoa - integer to ascii
   * @number: the number to convert
   * @base: the number's base
   *
   * Return: a pointer to char
   */
-char *_itoa_base(long int number, int base)
+char *itoa(long int number, int base)
 {
 	static char *arr = "0123456789abcdef";
 	static char buffer[50];
