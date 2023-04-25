@@ -35,6 +35,8 @@ int _printf(const char *format, ...)
 				str = va_arg(parameter, char *);
 				printed += _puts(str);
 			}
+			if (format[i] != 's' && format[i] != 'c' && format[i] == '%')
+				return (-1);
 		}
 		else
 		{
