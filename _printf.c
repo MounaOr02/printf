@@ -32,12 +32,6 @@ int _printf(const char *format, ...)
 				str = va_arg(parameter, char *);
 				printed += _puts(str);
 			}
-			if (format[i] == '%')
-			{
-				i++;
-				_putchar('%');
-				printed++;
-			}
 		}
 		i++;
 	}
