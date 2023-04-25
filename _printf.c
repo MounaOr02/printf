@@ -21,14 +21,12 @@ int _printf(const char *format, ...)
 			i++;
 			if (format[i] == 'c')
 			{
-				i++;
 				cc = (char) va_arg(parameter, int);
 				_putchar(cc);
 				printed++;
 			}
 			if (format[i] == 's')
 			{
-				i++;
 				str = va_arg(parameter, char *);
 				printed += _puts(str);
 			}
