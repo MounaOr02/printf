@@ -32,6 +32,17 @@ int _printf(const char *format, ...)
 				str = va_arg(parameter, char *);
 				printed += _puts(str);
 			}
+			if (format[i] == '%')
+			{
+				i++;
+				_putchar('%');
+				printed++;
+			}
+		}
+		else
+		{
+			 write(STDOUT_FILENO, format, _strlen(format));
+			 printed += _strlen(format);
 		}
 		i++;
 	}
