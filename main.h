@@ -1,13 +1,44 @@
-#ifndef _PRINTF_H
-#define _PRINTF_H
-#include <stdarg.h>
+#ifndef MAIN_H
+#define MAIN_H
 #include <unistd.h>
+#include <stdarg.h>
+#include <stdlib.h>
 
-int _printf(const char *format, ...);
-int _putchar(int c);
-int _puts(char *str);
-int _strlen(char *s);
+/* printf.c*/
+int _printf(const char *, ...);
 
+/* handler.c */
+int handler(const char *, va_list);
+int percent_handler(const char *, va_list, int *);
 
+/* utils */
+int _strlen(const char *);       /* _strlen.c */
+int print(char *);               /* print.c */
+char *_itoa_base(long int, int); /* _itoa_base.c */
+int _putchar(char);              /* putchar.c */
+int buffer(char);                /* putchar.c */
+
+/* printers */
+int print_string(va_list);
+int print_char(va_list);
+int print_integer(va_list);
+int print_binary(va_list);
+int print_unsigned(va_list);
+int print_octal(va_list);
+int print_hexadecimal_low(va_list);
+int print_hexadecimal_upp(va_list);
+int print_pointer(va_list);
+int print_rev_string(va_list);
+int print_rot(va_list);
+/**
+ * struct _format - Typedef struct
+ * @type: Format
+ * @f: The function associated
+ **/
+typedef struct _format
+{
+	char type;
+	int (*f)(va_list);
+} format;
 
 #endif
