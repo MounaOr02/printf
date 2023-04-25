@@ -33,5 +33,6 @@ int _printf(const char *format, ...)
 			return (size);
 		}
 	}
+	va_end(parameter);
 	return (0);
 }
