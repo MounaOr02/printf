@@ -10,13 +10,12 @@ int _printf(const char *format, ...)
 	va_list parameter;
 	char *str, cc;
 	int i = 0, printed = 0;
-	
-	if(!format)
+
+	if (!format)
 		return (-1);
 	if (format[0] == '%' && format[1] == ' ' && format[2] == '\0')
 		return (-1);
 	va_start(parameter, format);
-	
 	while (format[i])
 	{
 		if (format[i] == '%')
