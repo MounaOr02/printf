@@ -39,11 +39,6 @@ int _printf(const char *format, ...)
 				printed++;
 			}
 		}
-		else
-		{
-			 write(STDOUT_FILENO, format, _strlen(format));
-			 printed += _strlen(format);
-		}
 		i++;
 	}
 	va_end(parameter);
