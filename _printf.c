@@ -9,24 +9,29 @@ int _printf(const char *format, ...)
 {
 	va_list parameter;
 	char *str, cc;
-	int printed = 0;
+	int i = 0, printed = 0;
 
 	if (format == NULL)
 		return (-1);
 	va_start(parameter, format);
-	
-	if (format[0] == '%')
+	while (format[i])
 	{
-		if (format[1] == 'c')
+		if (format[i] == '%')
 		{
-			cc = (char) va_arg(parameter, int);
-			_putchar(cc);
-			printed++;
-		}
-		if (format[1] == 's')
-		{
-			str = va_arg(parameter, char *);
-			printed += _puts(str);
+			i++;
+			if (format[i] == 'c')
+			{
+				i++;
+				cc = (char) va_arg(parameter, int);
+				_putchar(cc);
+				printed++;
+			}
+			if (format[i] == 's')
+			{
+				i++;
+				str = va_arg(parameter, char *);
+				printed += _puts(str);
+			}
 		}
 	}
 	va_end(parameter);
