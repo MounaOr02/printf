@@ -3,39 +3,37 @@
  * _printf -  a function that produces output according to a format
  * @format: the output format
  * Return: the number of characters printed
+ * (excluding the null byte used to end output to strings)
  */
 int _printf(const char *format, ...)
 {
 	va_list parameter;
-	char *str;
-	int i, printed = 0;
+	char *str, cc;
+	int i = 0, printed = 0;
 
-	if (!format)
+	if(!format)
 		return (-1);
 	va_start(parameter, format);
-	for (i = 0; !format[i]; i++)
+	while (format[i])
 	{
-		if (format[i++] == '%')
+		if (format[i] == '%')
 		{
-			switch (format[i])
+			i++;
+			if (format[i] == 'c')
 			{
-				case '%':
-					_putchar('%');
-					printed++;
-					break;
-				case 'c':
-					_putchar((char) va_arg(parameter, int));
-					printed++;
-					break;
-				case 's':
-					str = va_arg(parameter, char *);
-					printed += _puts(str);
-					break;
-				default:
-					_putchar('%');
-					_putchar(format[i]);
-					printed += 2;
-					break;
+				cc = (char) va_arg(parameter, int);
+				_putchar(cc);
+				printed++;
+			}
+			if (format[i] == '%')
+			{
+				_putchar('%');
+				printed++;
+			}
+			if (format[i] == 's')
+			{
+				str = va_arg(parameter, char *);
+				printed += _puts(str);
 			}
 		}
 		else
@@ -43,6 +41,7 @@ int _printf(const char *format, ...)
 			_putchar(format[i]);
 			printed++;
 		}
+		i++;
 	}
 	va_end(parameter);
 	return (printed);
