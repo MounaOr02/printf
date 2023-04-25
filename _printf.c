@@ -19,21 +19,26 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			if (format[i] == 'c')
+			switch (format[i])
 			{
-				cc = (char) va_arg(parameter, int);
-				_putchar(cc);
-				printed++;
-			}
-			if (format[i] == '%')
-			{
-				_putchar('%');
-				printed++;
-			}
-			if (format[i] == 's')
-			{
-				str = va_arg(parameter, char *);
-				printed += _puts(str);
+				case '%':
+					_putchar('%');
+					printed++;
+					break;
+				case 'c':
+					cc = (char) va_arg(parameter, int);
+					_putchar(cc);
+					printed++;
+					break;
+				case 's':
+					str = va_arg(parameter, char *);
+					printed += _puts(str);
+					break;
+				default:
+					_putchar('%');
+					_putchar(format[i]);
+					printed += 2;
+					break;
 			}
 		}
 		else
