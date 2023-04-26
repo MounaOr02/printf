@@ -58,7 +58,17 @@ int percent_handler(const char *str, va_list list, int *i)
 		_putchar('%');
 		return (1);
 	}
-
+	
+	while (str[*i] == '+' || str[*i] == ' ' || str[*i] == '#')
+	{
+		if (str[*i] == '+')
+			flags |= FLAG_PLUS;
+		else if (str[*i] == ' ')
+			flags |= FLAG_SPACE;
+		else if (str[*i] == '#')
+			flags |= FLAG_HASH;
+		*i += 1;
+	}
 	number_formats = sizeof(formats) / sizeof(formats[0]);
 	for (size = j = 0; j < number_formats; j++)
 	{
@@ -68,6 +78,16 @@ int percent_handler(const char *str, va_list list, int *i)
 			return (size);
 		}
 	}
-	_putchar('%'), _putchar(str[*i]);
-	return (2);
+	_putchar('%');
+	if (flags != 0)
+	{
+		if (flags & FLAG_PLUS)
+			_putchar('+');
+		else if (flags & FLAG_SPACE)
+			_putchar(' ');
+		if (flags & FLAG_HASH)
+			_putchar('#');
+	}
+	_putchar(str[*i]);
+	return (flags == 0 ? 1 : 2);
 }
