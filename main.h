@@ -30,6 +30,9 @@ int print_hexadecimal_upp(va_list);
 int print_pointer(va_list);
 int print_rev_string(va_list);
 int print_rot(va_list);
+int print_non_printable(char *str);
+int print_string_S(va_list args);
+int print_hex_width(unsigned int n, int width);
 /**
  * struct _format - Typedef struct
  * @type: Format
